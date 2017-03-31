@@ -1,14 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Home Page View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomePageViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +20,88 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aaV-dJ-uxm">
+                                <rect key="frame" x="14" y="615" width="160" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="6oo-7n-ilR"/>
+                                    <constraint firstAttribute="height" constant="38" id="QU3-qh-CJ3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <state key="normal" title="登录">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aop-ww-sWp"/>
+                                    <segue destination="9W0-OR-zEf" kind="show" id="KJA-sx-mp5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cwd-XS-LQ4">
+                                <rect key="frame" x="201" y="615" width="160" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="n5A-oD-ScN"/>
+                                    <constraint firstAttribute="width" constant="160" id="wMQ-6d-WZU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <state key="normal" title="注册加盟">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="registerBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BPd-jU-h8p"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="cwd-XS-LQ4" secondAttribute="bottom" constant="14" id="Ato-pw-Xzh"/>
+                            <constraint firstItem="aaV-dJ-uxm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="14" id="EGg-fJ-HRt"/>
+                            <constraint firstAttribute="trailing" secondItem="cwd-XS-LQ4" secondAttribute="trailing" constant="14" id="Z0U-kw-jG1"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="aaV-dJ-uxm" secondAttribute="bottom" constant="14" id="khi-BD-a8U"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="loginBtn" destination="aaV-dJ-uxm" id="YIw-Tb-ilO"/>
+                        <outlet property="registerBtn" destination="cwd-XS-LQ4" id="9KX-Ad-vny"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-2490" y="169"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ddb-Qb-yMw">
+            <objects>
+                <navigationController id="9W0-OR-zEf" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="S8j-xD-RMR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="68b-pO-05e" kind="relationship" relationship="rootViewController" id="ccG-3Q-aSc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dCI-EV-Gvn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1809" y="169"/>
+        </scene>
+        <!--登录-->
+        <scene sceneID="Ydm-QM-RyS">
+            <objects>
+                <viewController id="68b-pO-05e" customClass="LoginViewController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" title="登录" id="x0R-Yn-eYu">
+                        <barButtonItem key="leftBarButtonItem" image="back" id="D5D-hN-u6E">
+                            <connections>
+                                <action selector="leftBarButtonPressed:" destination="68b-pO-05e" id="sFG-Od-Pav"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B5b-4g-4uE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1129" y="169"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="back" width="20" height="20"/>
+    </resources>
 </document>
