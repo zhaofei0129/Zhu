@@ -33,7 +33,7 @@
                                 </state>
                                 <connections>
                                     <action selector="loginBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aop-ww-sWp"/>
-                                    <segue destination="9W0-OR-zEf" kind="show" id="KJA-sx-mp5"/>
+                                    <action selector="loginBtnPressedHighlighted:" destination="BYZ-38-t0r" eventType="touchDown" id="pTD-P0-vwA"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cwd-XS-LQ4">
@@ -48,60 +48,69 @@
                                 </state>
                                 <connections>
                                     <action selector="registerBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BPd-jU-h8p"/>
+                                    <action selector="registerBtnPressedHighlighted:" destination="BYZ-38-t0r" eventType="touchDown" id="fq0-Tc-h5J"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R1n-UW-kuj">
+                                <rect key="frame" x="165" y="587" width="8" height="8"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="8" id="RkO-KK-9Q8"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="8" id="bCe-li-AEx"/>
+                                    <constraint firstAttribute="height" constant="8" id="fAK-j3-VtA"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="8" id="t1Y-72-Anx"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="btn0Pressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0uO-NV-8TS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bip-gw-q1W">
+                                <rect key="frame" x="183" y="587" width="8" height="8"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="8" id="2d8-xd-DCl"/>
+                                    <constraint firstAttribute="width" constant="8" id="Kuy-sx-Glz"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="btn0Pressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gl1-av-lnp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="id6-ta-o25">
+                                <rect key="frame" x="201" y="587" width="8" height="8"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="8" id="LgT-uB-S60"/>
+                                    <constraint firstAttribute="width" constant="8" id="aF0-LG-vkF"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="8" id="i8o-lV-QkW"/>
+                                    <constraint firstAttribute="height" constant="8" id="tMn-S6-dNW"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="btn0Pressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="u54-NI-KTk"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="id6-ta-o25" firstAttribute="leading" secondItem="bip-gw-q1W" secondAttribute="trailing" constant="10" id="8pQ-V9-8bb"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="cwd-XS-LQ4" secondAttribute="bottom" constant="14" id="Ato-pw-Xzh"/>
                             <constraint firstItem="aaV-dJ-uxm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="14" id="EGg-fJ-HRt"/>
+                            <constraint firstItem="aaV-dJ-uxm" firstAttribute="top" secondItem="bip-gw-q1W" secondAttribute="bottom" constant="20" id="HcI-JB-U21"/>
+                            <constraint firstItem="bip-gw-q1W" firstAttribute="leading" secondItem="R1n-UW-kuj" secondAttribute="trailing" constant="10" id="Tzn-H2-aLB"/>
+                            <constraint firstItem="bip-gw-q1W" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UnO-sr-qXx"/>
                             <constraint firstAttribute="trailing" secondItem="cwd-XS-LQ4" secondAttribute="trailing" constant="14" id="Z0U-kw-jG1"/>
+                            <constraint firstItem="id6-ta-o25" firstAttribute="top" secondItem="bip-gw-q1W" secondAttribute="top" id="ja8-V5-M1q"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="aaV-dJ-uxm" secondAttribute="bottom" constant="14" id="khi-BD-a8U"/>
+                            <constraint firstItem="R1n-UW-kuj" firstAttribute="top" secondItem="bip-gw-q1W" secondAttribute="top" id="le2-tT-hp9"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btn0" destination="R1n-UW-kuj" id="8wY-9Q-4y1"/>
+                        <outlet property="btn1" destination="bip-gw-q1W" id="7pL-FD-ZoP"/>
+                        <outlet property="btn2" destination="id6-ta-o25" id="BVb-Ee-cT7"/>
                         <outlet property="loginBtn" destination="aaV-dJ-uxm" id="YIw-Tb-ilO"/>
                         <outlet property="registerBtn" destination="cwd-XS-LQ4" id="9KX-Ad-vny"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2490" y="169"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="ddb-Qb-yMw">
-            <objects>
-                <navigationController id="9W0-OR-zEf" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="S8j-xD-RMR">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="68b-pO-05e" kind="relationship" relationship="rootViewController" id="ccG-3Q-aSc"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dCI-EV-Gvn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1809" y="169"/>
-        </scene>
-        <!--登录-->
-        <scene sceneID="Ydm-QM-RyS">
-            <objects>
-                <viewController id="68b-pO-05e" customClass="LoginViewController" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="登录" id="x0R-Yn-eYu">
-                        <barButtonItem key="leftBarButtonItem" image="back" id="D5D-hN-u6E">
-                            <connections>
-                                <action selector="leftBarButtonPressed:" destination="68b-pO-05e" id="sFG-Od-Pav"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="B5b-4g-4uE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1129" y="169"/>
+            <point key="canvasLocation" x="-2490.4000000000001" y="168.6656671664168"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="back" width="20" height="20"/>
-    </resources>
 </document>
