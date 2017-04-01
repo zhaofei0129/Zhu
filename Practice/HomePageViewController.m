@@ -74,23 +74,19 @@
 }
 
 - (IBAction)loginBtnPressed:(UIButton *)sender {
-    NSLog(@"loginBtnPressed");
     sender.layer.borderColor = UIColorFromHex(0x00be00).CGColor;
 }
 
 - (IBAction)loginBtnPressedHighlighted:(UIButton *)sender {
-    NSLog(@"loginBtnPressedHighlighted");
     sender.layer.borderColor = UIColorFromHex(0x00ab00).CGColor;
 }
 
 
 - (IBAction)registerBtnPressed:(UIButton *)sender {
-    NSLog(@"registerBtnPressed");
     sender.backgroundColor = UIColorFromHex(0x00be00);
 }
 
 - (IBAction)registerBtnPressedHighlighted:(UIButton *)sender {
-    NSLog(@"registerBtnPressedHighlighted");
     sender.backgroundColor = UIColorFromHex(0x00ab00);
 }
 
