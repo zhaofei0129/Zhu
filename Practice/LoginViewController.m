@@ -18,6 +18,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *forgetPwdBtn;
 @property (weak, nonatomic) IBOutlet UIButton *registerBtn;
 @property (weak, nonatomic) IBOutlet UILabel *registerLabel;
+@property (weak, nonatomic) IBOutlet UITextField *accountTextField;
+@property (weak, nonatomic) IBOutlet UITextField *pwdTextField;
 
 @end
 
@@ -27,9 +29,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     // draw navigationBar
-    //self.navigationController.navigationBar.backgroundColor = UIColorFromHex(0x00be00);
     UINavigationBar *navigationBar = self.navigationController.navigationBar;
-    navigationBar.translucent = NO; // 半透明 不
     NSDictionary *attributes = @{
                                  NSForegroundColorAttributeName: UIColorFromHex(0xff2121),
                                  NSFontAttributeName: [UIFont boldSystemFontOfSize:16]
@@ -39,7 +39,7 @@
     // draw navigationItem
     UIImage *image = self.navigationItem.leftBarButtonItem.image;
     self.navigationItem.leftBarButtonItem.image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-
+    
     // draw lineViews
     for (UIView *view in self.lineViews) {
         view.backgroundColor = UIColorFromHex(0xe8e8e8);
@@ -68,12 +68,23 @@
     [self.forgetPwdBtn setTitleColor:UIColorFromHex(0x939393) forState:UIControlStateNormal];
     [self.registerBtn setTitleColor:UIColorFromHex(0x00be00) forState:UIControlStateNormal];
     self.registerLabel.textColor = UIColorFromHex(0x939393);
-
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
+    // draw accountTextField & pwdTextField
+    NSMutableParagraphStyle *style = [self.accountTextField.defaultTextAttributes[NSParagraphStyleAttributeName] mutableCopy];
+    
+    style.minimumLineHeight = self.accountTextField.font.lineHeight - (self.accountTextField.font.lineHeight - [UIFont systemFontOfSize:14.0].lineHeight) / 2.0;
+    NSDictionary *attributedPlaceholderDic = @{
+                                               NSForegroundColorAttributeName: UIColorFromHex(0x939393),
+                                               NSFontAttributeName: [UIFont systemFontOfSize:14],
+                                               NSParagraphStyleAttributeName: style
+                                               };
+    NSMutableAttributedString *attributedPlaceholderOfAccount = [[NSMutableAttributedString alloc]initWithString:self.accountTextField.placeholder attributes:attributedPlaceholderDic];
+    self.accountTextField.attributedPlaceholder = attributedPlaceholderOfAccount;
+    self.accountTextField.tintColor = UIColorFromHex(0x00be00);
+    
+    NSMutableAttributedString *attributedPlaceholderOfPwd = [[NSMutableAttributedString alloc]initWithString:self.pwdTextField.placeholder attributes:attributedPlaceholderDic];
+    self.pwdTextField.attributedPlaceholder = attributedPlaceholderOfPwd;
+    self.pwdTextField.tintColor = UIColorFromHex(0x00be00);
 }
 
 - (IBAction)telBtnPressed:(UIButton *)sender {
@@ -100,15 +111,9 @@
     NSLog(@"registerBtnPressed");
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)clearBtnPressed:(UIButton *)sender {
+    self.accountTextField.text = @"";
 }
-*/
 
 
 
