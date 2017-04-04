@@ -29,6 +29,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    // notification
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChange:) name:UITextFieldTextDidChangeNotification object:nil];
+    
     // draw navigationBar
     UINavigationBar *navigationBar = self.navigationController.navigationBar;
     NSDictionary *attributes = @{
@@ -64,6 +67,7 @@
     self.loginBtn.backgroundColor = UIColorFromHex(0x7c7d7f);
     self.loginBtn.layer.masksToBounds = YES;
     self.loginBtn.layer.cornerRadius = 2.0;
+    self.loginBtn.userInteractionEnabled = NO;
     
     // draw forgetPwdBtn & registerBtn &registerLabel
     [self.forgetPwdBtn setTitleColor:UIColorFromHex(0x939393) forState:UIControlStateNormal];
@@ -93,6 +97,11 @@
 
 }
 
+-(void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:nil];
+}
+
 - (IBAction)telBtnPressed:(UIButton *)sender {
     NSLog(@"telBtnPressed");
 }
@@ -102,7 +111,12 @@
 }
 
 - (IBAction)loginBtnPressed:(UIButton *)sender {
-    sender.backgroundColor = UIColorFromHex(0x7c7d7f);
+    NSLog(@"loginBtnPressed");
+    if (self.accountTextField.text.length != 0 && self.pwdTextField.text.length != 0) {
+        sender.backgroundColor = UIColorFromHex(0x00be00);
+    } else {
+        sender.backgroundColor = UIColorFromHex(0x7c7d7f);
+    }
 }
 
 - (IBAction)loginBtnPressedHighlighted:(UIButton *)sender {
@@ -123,11 +137,17 @@
 }
 
 - (void)textChange:(NSNotification *)notification {
-    UITextField *textField = notification.object;
-    if (textField.text.length == 0) {
+    if (self.accountTextField.text.length == 0) {
         self.clearBtn.hidden = YES;
     } else {
         self.clearBtn.hidden = NO;
+    }
+    if (self.accountTextField.text.length != 0 && self.pwdTextField.text.length != 0) {
+        self.loginBtn.backgroundColor = UIColorFromHex(0x00be00);
+        self.loginBtn.userInteractionEnabled = YES;
+    } else {
+        self.loginBtn.backgroundColor = UIColorFromHex(0x7c7d7f);
+        self.loginBtn.userInteractionEnabled = NO;
     }
 }
 
@@ -146,30 +166,12 @@
 #pragma UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
-    NSLog(@"textFieldShouldReturn");
-    return YES;
-}
-
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    if (textField == self.accountTextField) {
-        NSLog(@"textFieldShouldBeginEditing -- accountTextField");
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChange:) name:UITextFieldTextDidChangeNotification object:textField];
-        [[NSNotificationCenter defaultCenter] postNotificationName:UITextFieldTextDidChangeNotification object:textField];
-    } else {
-        NSLog(@"textFieldShouldBeginEditing -- pwdTextField");
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChange:) name:UITextFieldTextDidChangeNotification object:textField];
-        [[NSNotificationCenter defaultCenter] postNotificationName:UITextFieldTextDidChangeNotification object:textField];
-    }
     return YES;
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
-    if (textField == self.accountTextField) {
-        NSLog(@"textFieldShouldEndEditing -- accountTextField");
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:textField];
-    } else {
-        NSLog(@"textFieldShouldEndEditing -- pwdTextField");
-    }
+    NSLog(@"account = %@ -- accountTextField", self.accountTextField.text);
+    NSLog(@"pwd = %@ -- accountTextField", self.pwdTextField.text);
     return YES;
 }
 
