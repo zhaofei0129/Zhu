@@ -117,7 +117,7 @@
                         <viewControllerLayoutGuide type="top" id="H6k-cb-SGy"/>
                         <viewControllerLayoutGuide type="bottom" id="WQG-fa-Hh7"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ij5-WP-Oxb">
+                    <view key="view" contentMode="scaleToFill" id="Ij5-WP-Oxb" customClass="UIControl">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -184,6 +184,9 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="AEm-uL-7yM" id="owN-rW-kJD"/>
+                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0w2-2b-YgV">
                                         <rect key="frame" x="331" y="21" width="24" height="24"/>
@@ -233,21 +236,26 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="visible" translatesAutoresizingMaskIntoConstraints="NO" id="jtv-su-V7u">
-                                        <rect key="frame" x="331" y="21" width="24" height="24"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="24" id="5Ze-Xg-Axf"/>
-                                            <constraint firstAttribute="width" constant="24" id="KVv-I2-ttG"/>
-                                            <constraint firstAttribute="height" constant="24" id="O8Y-ou-7lq"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="cT8-MO-cjd"/>
-                                        </constraints>
-                                    </imageView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="v6a-or-TKw">
                                         <rect key="frame" x="67" y="23" width="246" height="20"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="alphabet" secureTextEntry="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="AEm-uL-7yM" id="68h-fp-lXJ"/>
+                                        </connections>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cl4-lG-PLG">
+                                        <rect key="frame" x="331" y="21" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="YTL-fO-JXA"/>
+                                            <constraint firstAttribute="width" constant="24" id="hG1-Wx-IOu"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="visible"/>
+                                        <connections>
+                                            <action selector="visibleBtnPressed:" destination="AEm-uL-7yM" eventType="touchUpInside" id="vhf-Il-zKO"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -255,12 +263,12 @@
                                     <constraint firstItem="v6a-or-TKw" firstAttribute="leading" secondItem="ktG-EC-cb3" secondAttribute="trailing" constant="18" id="44v-Q8-5hX"/>
                                     <constraint firstItem="ktG-EC-cb3" firstAttribute="centerY" secondItem="7EQ-eK-Sq1" secondAttribute="centerY" id="5Ib-b0-gAC"/>
                                     <constraint firstAttribute="bottom" secondItem="Ucn-Sa-eth" secondAttribute="bottom" id="5Pc-46-s76"/>
+                                    <constraint firstAttribute="trailing" secondItem="Cl4-lG-PLG" secondAttribute="trailing" constant="20" id="6jz-Ld-c1E"/>
                                     <constraint firstItem="v6a-or-TKw" firstAttribute="centerY" secondItem="7EQ-eK-Sq1" secondAttribute="centerY" id="A5M-Gd-qun"/>
                                     <constraint firstItem="ktG-EC-cb3" firstAttribute="leading" secondItem="7EQ-eK-Sq1" secondAttribute="leading" constant="20" id="Fhk-52-vjT"/>
                                     <constraint firstItem="Ucn-Sa-eth" firstAttribute="leading" secondItem="7EQ-eK-Sq1" secondAttribute="leading" id="NfG-iS-A59"/>
-                                    <constraint firstAttribute="trailing" secondItem="jtv-su-V7u" secondAttribute="trailing" constant="20" id="UtQ-zs-l5B"/>
-                                    <constraint firstItem="jtv-su-V7u" firstAttribute="leading" secondItem="v6a-or-TKw" secondAttribute="trailing" constant="18" id="YEK-4d-qNe"/>
-                                    <constraint firstItem="jtv-su-V7u" firstAttribute="centerY" secondItem="7EQ-eK-Sq1" secondAttribute="centerY" id="h73-7v-M8n"/>
+                                    <constraint firstItem="Cl4-lG-PLG" firstAttribute="leading" secondItem="v6a-or-TKw" secondAttribute="trailing" constant="18" id="ZtH-hv-2xO"/>
+                                    <constraint firstItem="Cl4-lG-PLG" firstAttribute="centerY" secondItem="7EQ-eK-Sq1" secondAttribute="centerY" id="hRc-2m-YFs"/>
                                     <constraint firstAttribute="height" constant="66" id="mhn-NH-ng4"/>
                                 </constraints>
                             </view>
@@ -309,6 +317,9 @@
                             <constraint firstItem="kp0-z8-9k6" firstAttribute="leading" secondItem="Ij5-WP-Oxb" secondAttribute="leading" constant="30" id="y8i-Tt-k2B"/>
                             <constraint firstItem="Tyh-NN-PJL" firstAttribute="centerX" secondItem="Ij5-WP-Oxb" secondAttribute="centerX" id="zWC-zX-3Un"/>
                         </constraints>
+                        <connections>
+                            <action selector="backroundTap:" destination="AEm-uL-7yM" eventType="touchDown" id="kBm-AT-WHP"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="登录" id="Dkw-9G-2D1">
                         <barButtonItem key="leftBarButtonItem" image="back" id="pUh-cV-WXI">
@@ -321,6 +332,7 @@
                         <outlet property="AccountTextField" destination="FFS-a5-JJL" id="gLl-VD-ZNm"/>
                         <outlet property="accountLabel" destination="j44-YV-SfF" id="KP0-ZB-uhO"/>
                         <outlet property="accountTextField" destination="FFS-a5-JJL" id="q4u-9k-RPQ"/>
+                        <outlet property="clearBtn" destination="0w2-2b-YgV" id="d1v-lB-V15"/>
                         <outlet property="forgetPwdBtn" destination="kp0-z8-9k6" id="AIx-Bo-vYQ"/>
                         <outlet property="loginBtn" destination="NkL-dc-c5g" id="T94-Oy-4nD"/>
                         <outlet property="pwdLabel" destination="ktG-EC-cb3" id="MzA-yx-yNc"/>

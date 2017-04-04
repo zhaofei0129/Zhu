@@ -9,7 +9,7 @@
 #import "LoginViewController.h"
 #import "Defines.h"
 
-@interface LoginViewController ()
+@interface LoginViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *telBtn;
 @property (strong, nonatomic) IBOutletCollection(UIView) NSArray *lineViews;
 @property (weak, nonatomic) IBOutlet UILabel *accountLabel;
@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *registerLabel;
 @property (weak, nonatomic) IBOutlet UITextField *accountTextField;
 @property (weak, nonatomic) IBOutlet UITextField *pwdTextField;
+@property (weak, nonatomic) IBOutlet UIButton *clearBtn;
 
 @end
 
@@ -81,10 +82,15 @@
     NSMutableAttributedString *attributedPlaceholderOfAccount = [[NSMutableAttributedString alloc]initWithString:self.accountTextField.placeholder attributes:attributedPlaceholderDic];
     self.accountTextField.attributedPlaceholder = attributedPlaceholderOfAccount;
     self.accountTextField.tintColor = UIColorFromHex(0x00be00);
+    self.accountTextField.textColor = UIColorFromHex(0x1a1b1d);
     
     NSMutableAttributedString *attributedPlaceholderOfPwd = [[NSMutableAttributedString alloc]initWithString:self.pwdTextField.placeholder attributes:attributedPlaceholderDic];
     self.pwdTextField.attributedPlaceholder = attributedPlaceholderOfPwd;
     self.pwdTextField.tintColor = UIColorFromHex(0x00be00);
+    self.pwdTextField.textColor = UIColorFromHex(0x1a1b1d);
+    
+    self.clearBtn.hidden = YES;
+
 }
 
 - (IBAction)telBtnPressed:(UIButton *)sender {
@@ -113,8 +119,58 @@
 
 - (IBAction)clearBtnPressed:(UIButton *)sender {
     self.accountTextField.text = @"";
+    sender.hidden = YES;
 }
 
+- (void)textChange:(NSNotification *)notification {
+    UITextField *textField = notification.object;
+    if (textField.text.length == 0) {
+        self.clearBtn.hidden = YES;
+    } else {
+        self.clearBtn.hidden = NO;
+    }
+}
 
+- (IBAction)backroundTap:(UIControl *)sender {
+    [self.accountTextField resignFirstResponder];
+    [self.pwdTextField resignFirstResponder];
+}
+
+- (IBAction)visibleBtnPressed:(UIButton *)sender {
+//    sender.selected = !sender.selected;
+//    if (!sender.selected) {
+//        self.pwdTextField.secureTextEntry = !self.pwdTextField.secureTextEntry;
+//    }
+}
+
+#pragma UITextFieldDelegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    NSLog(@"textFieldShouldReturn");
+    return YES;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    if (textField == self.accountTextField) {
+        NSLog(@"textFieldShouldBeginEditing -- accountTextField");
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChange:) name:UITextFieldTextDidChangeNotification object:textField];
+        [[NSNotificationCenter defaultCenter] postNotificationName:UITextFieldTextDidChangeNotification object:textField];
+    } else {
+        NSLog(@"textFieldShouldBeginEditing -- pwdTextField");
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChange:) name:UITextFieldTextDidChangeNotification object:textField];
+        [[NSNotificationCenter defaultCenter] postNotificationName:UITextFieldTextDidChangeNotification object:textField];
+    }
+    return YES;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    if (textField == self.accountTextField) {
+        NSLog(@"textFieldShouldEndEditing -- accountTextField");
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:textField];
+    } else {
+        NSLog(@"textFieldShouldEndEditing -- pwdTextField");
+    }
+    return YES;
+}
 
 @end
