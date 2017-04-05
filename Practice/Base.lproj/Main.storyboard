@@ -293,23 +293,62 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dJe-5d-eEK">
+                                <rect key="frame" x="84" y="121" width="206" height="164"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="waiting" translatesAutoresizingMaskIntoConstraints="NO" id="CnY-Vo-AdD">
+                                        <rect key="frame" x="73" y="34" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="E72-1k-Dmu"/>
+                                            <constraint firstAttribute="height" constant="60" id="QJk-PG-G4L"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="正在登录，请稍后" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kPF-xd-0nr">
+                                        <rect key="frame" x="46" y="110" width="115" height="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="kPF-xd-0nr" firstAttribute="centerX" secondItem="dJe-5d-eEK" secondAttribute="centerX" id="6Tv-39-yxW"/>
+                                    <constraint firstItem="kPF-xd-0nr" firstAttribute="top" secondItem="CnY-Vo-AdD" secondAttribute="bottom" constant="16" id="UUa-Y6-3Kg"/>
+                                    <constraint firstAttribute="width" constant="206" id="aBA-oH-zQN"/>
+                                    <constraint firstAttribute="height" constant="164" id="hLQ-BV-osC"/>
+                                    <constraint firstAttribute="bottom" secondItem="kPF-xd-0nr" secondAttribute="bottom" constant="34" id="hgv-0m-oE5"/>
+                                    <constraint firstItem="CnY-Vo-AdD" firstAttribute="centerX" secondItem="dJe-5d-eEK" secondAttribute="centerX" id="jsw-aD-teZ"/>
+                                    <constraint firstItem="CnY-Vo-AdD" firstAttribute="top" secondItem="dJe-5d-eEK" secondAttribute="top" constant="34" id="yiR-Fs-TGr"/>
+                                </constraints>
+                            </view>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="账号或密码错误" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpJ-SN-pK3">
+                                <rect key="frame" x="38" y="174" width="86" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="NkL-dc-c5g" firstAttribute="top" secondItem="cpJ-SN-pK3" secondAttribute="bottom" constant="4" id="3Bh-1t-lSs"/>
                             <constraint firstAttribute="trailing" secondItem="7EQ-eK-Sq1" secondAttribute="trailing" id="53m-zP-wGb"/>
                             <constraint firstItem="Cb9-kD-NcK" firstAttribute="leading" secondItem="Ij5-WP-Oxb" secondAttribute="leading" id="DQp-wc-IvX"/>
                             <constraint firstItem="NkL-dc-c5g" firstAttribute="top" secondItem="7EQ-eK-Sq1" secondAttribute="bottom" constant="34" id="DiJ-h1-Cj0"/>
                             <constraint firstItem="kp0-z8-9k6" firstAttribute="top" secondItem="NkL-dc-c5g" secondAttribute="bottom" constant="12" id="EFi-SG-Pih"/>
+                            <constraint firstItem="dJe-5d-eEK" firstAttribute="centerX" secondItem="Ij5-WP-Oxb" secondAttribute="centerX" id="Hrp-Ix-G6e"/>
                             <constraint firstItem="NkL-dc-c5g" firstAttribute="centerX" secondItem="Ij5-WP-Oxb" secondAttribute="centerX" id="L5T-AR-V0F"/>
                             <constraint firstItem="RUc-qy-JmX" firstAttribute="centerY" secondItem="quI-af-mzR" secondAttribute="centerY" id="LJ8-yM-CL7"/>
                             <constraint firstAttribute="trailing" secondItem="Cb9-kD-NcK" secondAttribute="trailing" id="OYY-3O-e1F"/>
                             <constraint firstItem="LqA-gM-h1P" firstAttribute="top" secondItem="Cb9-kD-NcK" secondAttribute="bottom" constant="29" id="QMP-it-LYZ"/>
                             <constraint firstItem="7EQ-eK-Sq1" firstAttribute="leading" secondItem="Ij5-WP-Oxb" secondAttribute="leading" id="Qwq-h5-Vqe"/>
                             <constraint firstItem="WQG-fa-Hh7" firstAttribute="top" secondItem="Tyh-NN-PJL" secondAttribute="bottom" constant="24" id="RNH-k8-iRP"/>
+                            <constraint firstItem="cpJ-SN-pK3" firstAttribute="leading" secondItem="NkL-dc-c5g" secondAttribute="leading" id="S7A-5n-GIa"/>
+                            <constraint firstItem="cpJ-SN-pK3" firstAttribute="top" secondItem="7EQ-eK-Sq1" secondAttribute="bottom" constant="12" id="cPd-5A-nsJ"/>
                             <constraint firstItem="quI-af-mzR" firstAttribute="top" secondItem="NkL-dc-c5g" secondAttribute="bottom" constant="12" id="eKT-UD-sNK"/>
                             <constraint firstItem="Cb9-kD-NcK" firstAttribute="top" secondItem="H6k-cb-SGy" secondAttribute="bottom" id="eLN-h3-ECd"/>
                             <constraint firstItem="RUc-qy-JmX" firstAttribute="top" secondItem="NkL-dc-c5g" secondAttribute="bottom" constant="12" id="fEk-5P-1Jj"/>
                             <constraint firstAttribute="trailing" secondItem="LqA-gM-h1P" secondAttribute="trailing" id="fKW-tq-cU0"/>
+                            <constraint firstItem="dJe-5d-eEK" firstAttribute="top" secondItem="ktG-EC-cb3" secondAttribute="top" id="i7E-gq-DnS"/>
                             <constraint firstItem="quI-af-mzR" firstAttribute="leading" secondItem="RUc-qy-JmX" secondAttribute="trailing" id="iUq-GL-XAf"/>
                             <constraint firstItem="LqA-gM-h1P" firstAttribute="leading" secondItem="Ij5-WP-Oxb" secondAttribute="leading" id="jYe-n1-yCA"/>
                             <constraint firstAttribute="trailing" secondItem="quI-af-mzR" secondAttribute="trailing" constant="30" id="klK-ys-AM5"/>
@@ -340,6 +379,8 @@
                         <outlet property="registerBtn" destination="quI-af-mzR" id="V18-6D-Oa8"/>
                         <outlet property="registerLabel" destination="RUc-qy-JmX" id="xfk-OI-2Rx"/>
                         <outlet property="telBtn" destination="Tyh-NN-PJL" id="CX7-F1-w92"/>
+                        <outlet property="waitingView" destination="dJe-5d-eEK" id="PsS-VI-jlR"/>
+                        <outlet property="wrongOfAccountAndPwdLabel" destination="cpJ-SN-pK3" id="fS7-li-WVa"/>
                         <outletCollection property="lineViews" destination="Cb9-kD-NcK" id="XEd-r3-08Z"/>
                         <outletCollection property="lineViews" destination="biB-mm-bOA" id="jYs-QD-Wmx"/>
                         <outletCollection property="lineViews" destination="VKT-xK-VF7" id="Kdu-E8-G8T"/>
@@ -349,6 +390,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PSK-IQ-ou2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2156" y="158.77061469265368"/>
+        </scene>
+        <!--Create Shop View Controller-->
+        <scene sceneID="r6e-DE-Imy">
+            <objects>
+                <viewController id="maV-s6-BhG" customClass="CreateShopViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8eq-Zr-Ufl"/>
+                        <viewControllerLayoutGuide type="bottom" id="PVd-cU-Elb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="a39-Gv-QXk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="dOd-sG-TeX"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N2c-eY-nR1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="199.19999999999999" y="225.33733133433284"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="l7S-PK-mta">
@@ -368,10 +428,29 @@
             </objects>
             <point key="canvasLocation" x="-2887" y="159"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Jvg-S5-BDr">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yx4-YZ-FrT" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FZX-Kw-f3y">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="maV-s6-BhG" kind="relationship" relationship="rootViewController" id="VjR-Z2-z2r"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4kv-Sg-PYt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-740" y="224.4377811094453"/>
+        </scene>
     </scenes>
     <resources>
         <image name="back" width="20" height="20"/>
         <image name="delete" width="24" height="24"/>
         <image name="visible" width="24" height="24"/>
+        <image name="waiting" width="60" height="60"/>
     </resources>
 </document>

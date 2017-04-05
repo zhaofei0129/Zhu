@@ -14,6 +14,7 @@
 		A49301BD1E8D5E9400874808 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A49301BB1E8D5E9400874808 /* Main.storyboard */; };
 		A49301BF1E8D5E9400874808 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A49301BE1E8D5E9400874808 /* Assets.xcassets */; };
 		A49301C21E8D5E9400874808 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A49301C01E8D5E9400874808 /* LaunchScreen.storyboard */; };
+		A4FEADAA1E93F6E8008B15F1 /* CreateShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4FEADA91E93F6E8008B15F1 /* CreateShopViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,8 @@
 		A49301BE1E8D5E9400874808 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A49301C11E8D5E9400874808 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A49301C31E8D5E9400874808 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A4FEADA81E93F6E8008B15F1 /* CreateShopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateShopViewController.h; sourceTree = "<group>"; };
+		A4FEADA91E93F6E8008B15F1 /* CreateShopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateShopViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +77,8 @@
 				A44031DD1E8EC8BD00A85F5B /* LoginViewController.h */,
 				A44031DE1E8EC8BD00A85F5B /* LoginViewController.m */,
 				A44031E01E8EC8F000A85F5B /* Defines.h */,
+				A4FEADA81E93F6E8008B15F1 /* CreateShopViewController.h */,
+				A4FEADA91E93F6E8008B15F1 /* CreateShopViewController.m */,
 			);
 			path = Practice;
 			sourceTree = "<group>";
@@ -159,6 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A44031DF1E8EC8BD00A85F5B /* LoginViewController.m in Sources */,
+				A4FEADAA1E93F6E8008B15F1 /* CreateShopViewController.m in Sources */,
 				A49301BA1E8D5E9400874808 /* HomePageViewController.m in Sources */,
 				A49301B71E8D5E9400874808 /* AppDelegate.m in Sources */,
 				A49301B41E8D5E9400874808 /* main.m in Sources */,

@@ -55,6 +55,7 @@
     self.btn2.layer.masksToBounds = YES;
     self.btn2.layer.cornerRadius = 4.0;
 
+    
 }
 
 - (void)didReceiveMemoryWarning {

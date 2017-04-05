@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "Defines.h"
+#import "CreateShopViewController.h"
 
 @interface LoginViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *telBtn;
@@ -21,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *accountTextField;
 @property (weak, nonatomic) IBOutlet UITextField *pwdTextField;
 @property (weak, nonatomic) IBOutlet UIButton *clearBtn;
+@property (weak, nonatomic) IBOutlet UIView *waitingView;
+@property (weak, nonatomic) IBOutlet UILabel *wrongOfAccountAndPwdLabel;
 
 @end
 
@@ -74,7 +77,7 @@
     [self.registerBtn setTitleColor:UIColorFromHex(0x00be00) forState:UIControlStateNormal];
     self.registerLabel.textColor = UIColorFromHex(0x939393);
     
-    // draw accountTextField & pwdTextField
+    // draw accountTextField & pwdTextField & clearBtn
     NSMutableParagraphStyle *style = [self.accountTextField.defaultTextAttributes[NSParagraphStyleAttributeName] mutableCopy];
     
     style.minimumLineHeight = self.accountTextField.font.lineHeight - (self.accountTextField.font.lineHeight - [UIFont systemFontOfSize:14.0].lineHeight) / 2.0;
@@ -95,6 +98,14 @@
     
     self.clearBtn.hidden = YES;
 
+    // draw waitingView
+    self.waitingView.backgroundColor = UIColorFromHex(0x000000);
+    self.waitingView.layer.masksToBounds = YES;
+    self.waitingView.layer.cornerRadius = 4.0;
+    self.waitingView.alpha = 0.9;
+    
+    // draw wrongOfAccountAndPwdLabel
+    self.wrongOfAccountAndPwdLabel.textColor = UIColorFromHex(0xff2121);
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
@@ -111,12 +122,40 @@
 }
 
 - (IBAction)loginBtnPressed:(UIButton *)sender {
-    NSLog(@"loginBtnPressed");
-    if (self.accountTextField.text.length != 0 && self.pwdTextField.text.length != 0) {
-        sender.backgroundColor = UIColorFromHex(0x00be00);
+    // read
+    NSLog(@"account = %@ -- accountTextField", self.accountTextField.text);
+    NSLog(@"pwd = %@ -- accountTextField", self.pwdTextField.text);
+    self.waitingView.hidden = NO;
+    self.view.userInteractionEnabled = NO;
+    self.navigationController.navigationBar.userInteractionEnabled = NO;
+    if ([self.accountTextField.text isEqual: @"1"]) {
+        [self performSelector:@selector(loginSuccessed) withObject:self afterDelay:2.0];
     } else {
-        sender.backgroundColor = UIColorFromHex(0x7c7d7f);
+        [self performSelector:@selector(loginFailed) withObject:self afterDelay:2.0];
     }
+    
+//    if (self.accountTextField.text.length != 0 && self.pwdTextField.text.length != 0) {
+//        sender.backgroundColor = UIColorFromHex(0x00be00);
+//    } else {
+//        sender.backgroundColor = UIColorFromHex(0x7c7d7f);
+//    }
+    //[NSThread sleepForTimeInterval:2.0];
+    //self.waitingView.hidden = YES;
+}
+
+- (void)loginSuccessed {
+    self.waitingView.hidden = YES;
+    self.view.userInteractionEnabled = YES;
+    self.navigationController.navigationBar.userInteractionEnabled = YES;
+    [self presentViewController:[[CreateShopViewController alloc]init] animated:YES completion:nil];
+}
+
+- (void)loginFailed {
+    self.waitingView.hidden = YES;
+    self.view.userInteractionEnabled = YES;
+    self.navigationController.navigationBar.userInteractionEnabled = YES;
+    self.wrongOfAccountAndPwdLabel.hidden = NO;
+    [self backroundTap:nil];
 }
 
 - (IBAction)loginBtnPressedHighlighted:(UIButton *)sender {
@@ -134,6 +173,8 @@
 - (IBAction)clearBtnPressed:(UIButton *)sender {
     self.accountTextField.text = @"";
     sender.hidden = YES;
+    self.loginBtn.backgroundColor = UIColorFromHex(0x7c7d7f);
+    self.loginBtn.userInteractionEnabled = NO;
 }
 
 - (void)textChange:(NSNotification *)notification {
@@ -157,10 +198,16 @@
 }
 
 - (IBAction)visibleBtnPressed:(UIButton *)sender {
-//    sender.selected = !sender.selected;
-//    if (!sender.selected) {
-//        self.pwdTextField.secureTextEntry = !self.pwdTextField.secureTextEntry;
-//    }
+    sender.selected = !sender.selected;
+    if (sender.selected) {
+        self.pwdTextField.secureTextEntry = NO;
+    } else {
+        self.pwdTextField.secureTextEntry = YES;
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
 }
 
 #pragma UITextFieldDelegate
@@ -170,8 +217,7 @@
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
-    NSLog(@"account = %@ -- accountTextField", self.accountTextField.text);
-    NSLog(@"pwd = %@ -- accountTextField", self.pwdTextField.text);
+    // write
     return YES;
 }
 
