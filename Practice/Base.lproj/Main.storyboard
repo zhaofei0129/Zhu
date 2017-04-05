@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -107,7 +108,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3554" y="159"/>
+            <point key="canvasLocation" x="-3606" y="159"/>
         </scene>
         <!--登录-->
         <scene sceneID="mGf-IJ-bla">
@@ -391,7 +392,7 @@
             </objects>
             <point key="canvasLocation" x="-2156" y="158.77061469265368"/>
         </scene>
-        <!--Create Shop View Controller-->
+        <!--创建店铺-->
         <scene sceneID="r6e-DE-Imy">
             <objects>
                 <viewController id="maV-s6-BhG" customClass="CreateShopViewController" sceneMemberID="viewController">
@@ -402,13 +403,89 @@
                     <view key="view" contentMode="scaleToFill" id="a39-Gv-QXk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_shop" translatesAutoresizingMaskIntoConstraints="NO" id="F0Y-86-m5h">
+                                <rect key="frame" x="125" y="160" width="124" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="124" id="EIu-In-HkU"/>
+                                    <constraint firstAttribute="height" constant="100" id="e1K-XL-EBc"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="亲，您好没有店铺" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8vS-Rj-ceI">
+                                <rect key="frame" x="130" y="270" width="115" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O3Y-YJ-RXd">
+                                <rect key="frame" x="38" y="337" width="298" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="bTe-By-XJa"/>
+                                    <constraint firstAttribute="width" constant="298" id="zUz-wo-Ipf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <state key="normal" title="立即创建店铺">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="createShopBtnPressed:" destination="maV-s6-BhG" eventType="touchUpInside" id="pKY-KJ-jT1"/>
+                                    <action selector="createShopBtnPressedHighlight:" destination="maV-s6-BhG" eventType="touchDown" id="Voz-P7-Sa9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0PN-8o-2SU">
+                                <rect key="frame" x="38" y="402" width="298" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="7dx-Dh-8MH"/>
+                                    <constraint firstAttribute="height" constant="48" id="L9g-Dk-3Wh"/>
+                                    <constraint firstAttribute="width" constant="298" id="e2k-dj-O8O"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="298" id="mQj-dN-6eC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <state key="normal" title="加入已有店铺">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="joinShopBtnPressed:" destination="maV-s6-BhG" eventType="touchUpInside" id="Paa-Jm-UDO"/>
+                                    <action selector="joinShopBtnPressedHighlight:" destination="maV-s6-BhG" eventType="touchDown" id="xfb-Ba-6s6"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HgI-Cg-BFZ">
+                                <rect key="frame" x="296" y="81" width="53" height="128"/>
+                                <color key="backgroundColor" red="1" green="0.37475247979999998" blue="0.3144791207" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="O3Y-YJ-RXd" firstAttribute="centerX" secondItem="a39-Gv-QXk" secondAttribute="centerX" id="0TF-Gp-1hs"/>
+                            <constraint firstItem="8vS-Rj-ceI" firstAttribute="top" secondItem="F0Y-86-m5h" secondAttribute="bottom" constant="10" id="Cl0-Nh-dze"/>
+                            <constraint firstItem="HgI-Cg-BFZ" firstAttribute="top" secondItem="8eq-Zr-Ufl" secondAttribute="bottom" constant="17" id="EUj-Ia-RMn"/>
+                            <constraint firstItem="0PN-8o-2SU" firstAttribute="centerX" secondItem="a39-Gv-QXk" secondAttribute="centerX" id="RgU-M8-pej"/>
+                            <constraint firstItem="0PN-8o-2SU" firstAttribute="top" secondItem="O3Y-YJ-RXd" secondAttribute="bottom" constant="17" id="aCI-le-4G7"/>
+                            <constraint firstItem="8vS-Rj-ceI" firstAttribute="centerX" secondItem="a39-Gv-QXk" secondAttribute="centerX" id="cCy-C1-JsN"/>
+                            <constraint firstItem="F0Y-86-m5h" firstAttribute="top" secondItem="8eq-Zr-Ufl" secondAttribute="bottom" constant="96" id="e5s-dZ-Vu4"/>
+                            <constraint firstItem="O3Y-YJ-RXd" firstAttribute="top" secondItem="8vS-Rj-ceI" secondAttribute="bottom" constant="50" id="kOm-DP-iEN"/>
+                            <constraint firstItem="HgI-Cg-BFZ" firstAttribute="leading" secondItem="a39-Gv-QXk" secondAttribute="leadingMargin" constant="280" id="nVz-5B-iKD"/>
+                            <constraint firstAttribute="trailing" secondItem="HgI-Cg-BFZ" secondAttribute="trailing" constant="26" id="pKW-8U-rz1"/>
+                            <constraint firstItem="PVd-cU-Elb" firstAttribute="top" secondItem="HgI-Cg-BFZ" secondAttribute="bottom" constant="458" id="vAH-No-mO4"/>
+                            <constraint firstItem="F0Y-86-m5h" firstAttribute="centerX" secondItem="a39-Gv-QXk" secondAttribute="centerX" id="zmk-37-35c"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="dOd-sG-TeX"/>
+                    <navigationItem key="navigationItem" title="创建店铺" id="dOd-sG-TeX">
+                        <barButtonItem key="rightBarButtonItem" title="退出" id="XT8-Ux-r2V">
+                            <connections>
+                                <action selector="exitBtnPressed:" destination="maV-s6-BhG" id="ura-sT-EZd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="createShopBtn" destination="O3Y-YJ-RXd" id="frM-la-FGZ"/>
+                        <outlet property="joinShopBtn" destination="0PN-8o-2SU" id="s1d-Ju-Ka2"/>
+                        <outlet property="noShopLabel" destination="8vS-Rj-ceI" id="ey2-vC-riF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N2c-eY-nR1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="199.19999999999999" y="225.33733133433284"/>
+            <point key="canvasLocation" x="-2156" y="834"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="l7S-PK-mta">
@@ -431,7 +508,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Jvg-S5-BDr">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yx4-YZ-FrT" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="CreateShopNC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yx4-YZ-FrT" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="FZX-Kw-f3y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -444,12 +521,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4kv-Sg-PYt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-740" y="224.4377811094453"/>
+            <point key="canvasLocation" x="-2887" y="835"/>
         </scene>
     </scenes>
     <resources>
         <image name="back" width="20" height="20"/>
         <image name="delete" width="24" height="24"/>
+        <image name="no_shop" width="124" height="100"/>
         <image name="visible" width="24" height="24"/>
         <image name="waiting" width="60" height="60"/>
     </resources>

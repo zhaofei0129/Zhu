@@ -147,7 +147,8 @@
     self.waitingView.hidden = YES;
     self.view.userInteractionEnabled = YES;
     self.navigationController.navigationBar.userInteractionEnabled = YES;
-    [self presentViewController:[[CreateShopViewController alloc]init] animated:YES completion:nil];
+    UINavigationController *createShopNV = [self.storyboard instantiateViewControllerWithIdentifier:@"CreateShopNC"];
+    [self presentViewController:createShopNV animated:YES completion:nil];
 }
 
 - (void)loginFailed {
